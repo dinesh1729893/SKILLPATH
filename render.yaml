@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: skillpath-ai-backend
+    runtime: python
+    plan: free
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OLLAMA_API_KEY
+        sync: false
+      - key: OLLAMA_API_URL
+        value: https://ollama.com/api
+      - key: OLLAMA_MODEL
+        value: gemma4:31b
+
+
